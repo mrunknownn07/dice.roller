@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Name Roller</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #ccc9df;
+        }
+        .container {
+            background: rgb(173, 21, 95);
+            padding: 20px;
+            border-radius: 8px;
+            border: solid 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #28a748;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        #dice {
+            margin-top: 20px;
+            width: 100px;
+            height: 100px;
+            transition: transform 0.2s;
+        }
+        .link-box {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #58e5a3;
+            border: 5px solid #dee2e6;
+            border-radius: 5px;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Random Name Roller</h1>
+    <button onclick="rollDice()">Roll the Dice</button>
+    <div id="dice"><img id="diceImage" src="" alt="Rolling" /></div>
+    <div id="result"></div>
+<h2>assign task via chats to </h2>
+    <div class="link-box">
+        <a href="https://www.instagram.com/direct/t/17845064738548540/" target="_blank">ASHII</a>
+    </div>
+    <div class="link-box">
+        <a href="https://www.instagram.com/direct/t/17850807944508863/" target="_blank">SRISHTI </a>
+    </div>
+</div>
+
+<script>
+    const names = ["ashii", "srishti","roll again"];
+    
+    function rollDice() {
+        const dice = document.getElementById("diceImage");
+        dice.src = ""; // Clear previous image
+        document.getElementById("result").innerText = ""; // Clear previous result
+
+        let rotation = 0;
+        const interval = setInterval(() => {
+            rotation += 30;
+            dice.style.transform = `rotate(${rotation}deg)`;
+        }, 100);
+
+        setTimeout(() => {
+            clearInterval(interval);
+            // Randomly select a name from the array
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            // dice.src = "https://media.tenor.com/sUiwSBs8S6QAAAAi/dice-game.gif"; // Replace with a rolling animation or image
+
+            document.getElementById("result").innerText = `You rolled: ${randomName}`;
+        }, 1200); // Duration of rolling animation
+    }
+</script>
+
+</body>
+</html>
